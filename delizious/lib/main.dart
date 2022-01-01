@@ -1,4 +1,7 @@
 import 'package:delizious/home.dart';
+import 'package:delizious/screens/categories.dart';
+import 'package:delizious/screens/category_meals.dart';
+import 'package:delizious/screens/meal_detail.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,6 +23,22 @@ class MyApp extends StatelessWidget {
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
       ),
       home: MyHomePage(),
+      routes: {
+        CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(),
+        MealDetailScreen.routeName: (context) => MealDetailScreen(),
+      },
+      onGenerateRoute: (settings) {
+        print(settings.arguments);
+        return MaterialPageRoute(
+          builder: (ctx) => CategoriesScreen(),
+        );
+      },
+      onUnknownRoute: (settings) {
+        print(settings.arguments);
+        return MaterialPageRoute(
+          builder: (ctx) => CategoriesScreen(),
+        );
+      },
     );
   }
 }
