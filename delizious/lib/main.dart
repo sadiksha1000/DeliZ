@@ -21,6 +21,14 @@ class MyApp extends StatelessWidget {
         fontFamily: "SplineSans",
         accentColor: Colors.amber,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
+        textTheme: const TextTheme(
+            bodyText1: TextStyle(
+              color: Color.fromRGBO(20, 51, 51, 1),
+            ),
+            headline4: TextStyle(
+              fontSize: 20,
+              fontFamily: "SplineSans-Medium",
+            )),
       ),
       home: MyHomePage(),
       routes: {
