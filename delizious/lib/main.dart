@@ -2,6 +2,7 @@ import 'package:delizious/home.dart';
 import 'package:delizious/screens/categories.dart';
 import 'package:delizious/screens/category_meals.dart';
 import 'package:delizious/screens/meal_detail.dart';
+import 'package:delizious/screens/tabscreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
               fontFamily: "SplineSans-Medium",
             )),
       ),
-      home: MyHomePage(),
+      home: TabScreen(),
       routes: {
         CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (context) => MealDetailScreen(),
