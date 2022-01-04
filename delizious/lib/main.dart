@@ -1,6 +1,8 @@
 import 'package:delizious/home.dart';
 import 'package:delizious/screens/categories.dart';
 import 'package:delizious/screens/category_meals.dart';
+import 'package:delizious/screens/favorites_screen.dart';
+import 'package:delizious/screens/filters_screen.dart';
 import 'package:delizious/screens/meal_detail.dart';
 import 'package:delizious/screens/tabscreen.dart';
 import 'package:flutter/material.dart';
@@ -31,10 +33,13 @@ class MyApp extends StatelessWidget {
               fontFamily: "SplineSans-Medium",
             )),
       ),
-      home: TabScreen(),
+      // home: TabScreen(),
       routes: {
+        '/': (ctx) => TabScreen(),
         CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (context) => MealDetailScreen(),
+        FiltersScreen.routeName: (context) => FiltersScreen(),
+        FavoritesScreen.routeName: (context) => FavoritesScreen(),
       },
       onGenerateRoute: (settings) {
         print(settings.arguments);

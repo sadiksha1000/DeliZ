@@ -1,5 +1,6 @@
 import 'package:delizious/screens/categories.dart';
 import 'package:delizious/widgets/appbar.dart';
+import 'package:delizious/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
 import './favorites_screen.dart';
 
@@ -11,10 +12,15 @@ class TabScreen extends StatefulWidget {
 }
 
 class _TabScreenState extends State<TabScreen> {
-  final List<Widget> _pages = [
-    CategoriesScreen(),
-    FavoritesScreen(),
-  ];
+  late List<Map<String, Object>> _pages;
+
+  @override
+  void initState() {
+    _pages = [
+      {'page': CategoriesScreen(), 'title': 'Categories'},
+      {'page': FavoritesScreen(), 'title': 'Favorites'},
+    ];
+  }
 
   int _selectedPageIndex = 0;
 
@@ -27,13 +33,19 @@ class _TabScreenState extends State<TabScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(title: 'MEALS'),
-      body: _pages[_selectedPageIndex],
+      appBar: MyAppBar(title: _pages[_selectedPageIndex]['title'] as String),
+      drawer: MainDrawer(),
+      body: _pages[_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         backgroundColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.white,
-        selectedItemColor: Theme.of(context).accentColor,
+        selectedItemColor: Colors.amberAccent,
+        iconSize: 25,
+        selectedFontSize: 20,
+        unselectedFontSize: 20,
+        currentIndex: _selectedPageIndex,
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.category),
@@ -41,10 +53,7 @@ class _TabScreenState extends State<TabScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.star),
-            title: Text(
-              'Favorites',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            label: 'Favorites',
           ),
         ],
       ),
