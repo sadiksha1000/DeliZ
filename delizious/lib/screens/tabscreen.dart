@@ -1,3 +1,4 @@
+import 'package:delizious/models/meal.dart';
 import 'package:delizious/screens/categories.dart';
 import 'package:delizious/widgets/appbar.dart';
 import 'package:delizious/widgets/main_drawer.dart';
@@ -5,7 +6,8 @@ import 'package:flutter/material.dart';
 import './favorites_screen.dart';
 
 class TabScreen extends StatefulWidget {
-  const TabScreen({Key? key}) : super(key: key);
+  final List<Meal> favoriteMeals;
+  const TabScreen({Key? key, required this.favoriteMeals}) : super(key: key);
 
   @override
   _TabScreenState createState() => _TabScreenState();
@@ -18,7 +20,10 @@ class _TabScreenState extends State<TabScreen> {
   void initState() {
     _pages = [
       {'page': CategoriesScreen(), 'title': 'Categories'},
-      {'page': FavoritesScreen(), 'title': 'Favorites'},
+      {
+        'page': FavoritesScreen(favoriteMeals: widget.favoriteMeals),
+        'title': 'Favorites'
+      },
     ];
   }
 
